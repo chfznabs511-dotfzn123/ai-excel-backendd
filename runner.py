@@ -11,7 +11,6 @@ import dask
 import pyjanitor
 import stringcase
 import unidecode
-import numpy_financial
 import statsmodels
 import pingouin
 import sklearn
@@ -69,7 +68,6 @@ def execute_code(code: str, sheet_data: dict) -> dict:
             'pyjanitor': pyjanitor,
             'stringcase': stringcase,
             'unidecode': unidecode,
-            'numpy_financial': numpy_financial,
             'statsmodels': statsmodels,
             'pingouin': pingouin,
             'sklearn': sklearn,
