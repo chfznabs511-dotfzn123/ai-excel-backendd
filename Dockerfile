@@ -3,7 +3,6 @@ FROM python:3.11.9-slim
 # Environment variables
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
-ENV PORT=10000
 
 WORKDIR /app
 
@@ -15,5 +14,5 @@ RUN pip install --no-cache-dir --upgrade pip && \
 # Copy application code
 COPY . .
 
-# Start Gunicorn
+# Start Gunicorn (Render will inject $PORT automatically)
 CMD gunicorn --bind 0.0.0.0:$PORT --workers 4 app:app
