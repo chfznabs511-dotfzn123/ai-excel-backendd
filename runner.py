@@ -8,7 +8,6 @@ import traceback
 # Import all allowed libraries
 import scipy
 import dask
-import pyjanitor
 import stringcase
 import unidecode
 import statsmodels
@@ -48,7 +47,6 @@ def execute_code(code: str, sheet_data: dict) -> dict:
             'np': np,
             'scipy': scipy,
             'dask': dask,
-            'pyjanitor': pyjanitor,
             'stringcase': stringcase,
             'unidecode': unidecode,
             'statsmodels': statsmodels,
