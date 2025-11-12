@@ -30,7 +30,6 @@ import xlsxwriter
 import xlrd
 import xlwt
 import pyxlsb
-import openpyxl_styles
 import dateutil
 import pytz
 
@@ -87,7 +86,6 @@ def execute_code(code: str, sheet_data: dict) -> dict:
             'xlrd': xlrd,
             'xlwt': xlwt,
             'pyxlsb': pyxlsb,
-            'openpyxl_styles': openpyxl_styles,
             'dateutil': dateutil,
             'pytz': pytz,
         }
