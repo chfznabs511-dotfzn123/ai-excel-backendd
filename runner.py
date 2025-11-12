@@ -26,11 +26,7 @@ import cvxpy
 import networkx
 import openpyxl
 import xlsxwriter
-import xlrd
-import xlwt
-import pyxlsb
-import dateutil
-import pytz
+
 
 def execute_code(code: str, sheet_data: dict) -> dict:
     try:
@@ -65,11 +61,7 @@ def execute_code(code: str, sheet_data: dict) -> dict:
             'networkx': networkx,
             'openpyxl': openpyxl,
             'xlsxwriter': xlsxwriter,
-            'xlrd': xlrd,
-            'xlwt': xlwt,
-            'pyxlsb': pyxlsb,
-            'dateutil': dateutil,
-            'pytz': pytz,
+            
         }
 
         exec(code, execution_globals)
