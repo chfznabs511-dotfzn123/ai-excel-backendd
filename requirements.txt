@@ -29,4 +29,3 @@ xlwt==1.3.0
 pyxlsb==1.0.10
 python-dateutil==2.9.0.post0
 pytz==2024.1
-
