@@ -1,15 +1,21 @@
-# app.py
+# app.py # Main Flask application and API endpoints
+
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from validator import validate_request_payload, validate_code
 from runner import execute_code
-import os
 
 app = Flask(__name__)
-CORS(app)  # Allow all origins for development; restrict in production
+
+# Configure CORS to allow requests from any origin (for Render free tier)
+CORS(app)
 
 @app.route('/execute', methods=['POST'])
 def execute():
+    """
+    API endpoint to receive and execute Python code.
+    Expects a JSON payload with 'code' and 'data' keys.
+    """
     payload = request.get_json()
     payload_errors = validate_request_payload(payload)
     if payload_errors:
@@ -34,6 +40,6 @@ def execute():
 def health_check():
     return "Python Code Execution Backend is running.", 200
 
-if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))
-    app.run(debug=True, host="0.0.0.0", port=port)
+if __name__ == '__main__':
+    app.run(debug=True, host='0.0.0.0', port=5000)
+
