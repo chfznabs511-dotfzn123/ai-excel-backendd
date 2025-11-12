@@ -1,23 +1,25 @@
-# 1. Use official Python runtime
+# Use official lightweight Python image
 FROM python:3.11.9-slim
 
-# 2. Environment settings
+# Environment settings
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
+ENV PORT=10000
 
-# 3. Set working directory
+# Set working directory
 WORKDIR /app
 
-# 4. Install dependencies
+# Install dependencies
 COPY requirements.txt .
 RUN pip install --no-cache-dir --upgrade pip && \
     pip install --no-cache-dir -r requirements.txt
 
-# 5. Copy application code
+# Copy all project files
 COPY . .
 
-# 6. Expose port for Render
+# Expose Render's port
 EXPOSE 10000
 
-# 7. Start the Flask app using Gunicorn
-CMD gunicorn --bind 0.0.0.0:$PORT --workers 4 app:app
+# Start Gunicorn server (Render automatically sets $PORT)
+CMD echo "🚀 Starting Flask backend on Render..." && \
+    gunicorn --bind 0.0.0.0:$PORT --workers 4 app:app
