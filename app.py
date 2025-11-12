@@ -1,4 +1,4 @@
-# app.py # Main Flask application and API endpoints
+# app.py - Main Flask application and API endpoints
 
 from flask import Flask, request, jsonify
 from flask_cors import CORS
@@ -7,8 +7,13 @@ from runner import execute_code
 
 app = Flask(__name__)
 
-# Configure CORS to allow requests from any origin (for Render free tier)
+# Allow requests from any origin (good for Render free tier)
 CORS(app)
+
+@app.route('/', methods=['GET'])
+def health_check():
+    """Health check route for Render."""
+    return jsonify({"status": "Python Code Execution Backend is running on Render."}), 200
 
 @app.route('/execute', methods=['POST'])
 def execute():
@@ -35,11 +40,3 @@ def execute():
         return jsonify(result), 200
     else:
         return jsonify(result), 500
-
-@app.route('/')
-def health_check():
-    return "Python Code Execution Backend is running.", 200
-
-if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=5000)
-
